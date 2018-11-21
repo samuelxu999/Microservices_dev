@@ -10,3 +10,11 @@ The training materials and sample codes, including:
 |:----------:|-------------|
 | 01_Orientation | Concept orientation and setup for docker. |
 | 02_Containers | Contrainer setup instruction. |
+
+## docker_dev
+The docker container development, including:
+
+|   source   | Description |
+|:----------:|-------------|
+| myopencv | OpenCV container image for Ubuntu_x86 platform. |
+
