@@ -1,5 +1,5 @@
-# myopencv
-This docker image includes: python2.7, python3.5 and opencv libs.
+# opencv_baseimage_x86
+This docker image built on Ubuntu-16.04 and includes: python2.7, python3.5 and opencv libs 3.4.0.
 
 The overview of contents of project are:
 
@@ -17,9 +17,9 @@ The demo sample codes and resources. Executing sample program to verify docker c
 
 
 ## build.sh
-After executing build.sh, the docker container myopencv will be built on your local environment.
+After executing build.sh, the docker image opencv_baseimage will be built on your local environment.
 
-To share image, you could push 'myopencv' image to docker hub.
+To share image, you could push 'opencv_baseimage' image to docker hub.
 
 1) Log in with your Docker ID
 
@@ -27,30 +27,30 @@ $ docker login
 
 2) Tag the image: 
 
-$ docker tag image username/repository:tag
+$ docker tag imagename username/repository:tag
 
 For example:
 
-$ docker tag image samuelxu999/opencv_baseimage:ubuntu_x86
+$ docker tag opencv_baseimage samuelxu999/opencv_baseimage:x86
 
-3) Publish the image by uploading your tagged image to the repository:
+3) Publish the imagename by uploading your tagged image to the repository:
 
 $ docker push username/repository:tag
 
 For example:
 
-$ docker push samuelxu999/opencv_baseimage:ubuntu_x86
+$ docker push samuelxu999/opencv_baseimage:x86
 
 ## run_bash.sh
 
-Run the docker contrainer, just execute run_bash.sh. After container startup, run sample programs in docker CLI to test functionality:
+Run the docker image, just execute run_bash.sh. After container startup, run sample programs in docker CLI to test functionality:
 
 $ python BasicOperationsImages.py
 
 ## run_ssh.sh
 
-Run the docker contrainer with ssh interface. After container startup, use ssh to attach contrainer:
+Run the docker image with ssh interface. After container startup, use ssh to access container:
 
 $ ssh docker@localhost -p 8022
 
-Then input the password: samuelxu999, and log on contrainer.
+Then input the password: samuelxu999, and log on container.

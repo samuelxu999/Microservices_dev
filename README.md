@@ -16,5 +16,8 @@ The docker container development, including:
 
 |   source   | Description |
 |:----------:|-------------|
-| myopencv | OpenCV container image for Ubuntu_x86 platform. |
+| myopencv | Test OpenCV container image for Ubuntu_x86 platform. |
+| myopencv_armv7l | Test OpenCV container image for armv7l platform. |
+| opencv_baseimage_x86 | OpenCV baseimage from Ubuntu-16.04 on x86 platform. |
+| opencv_baseimage_armv7l | OpenCV baseimage image from Debian/Jessie on armv7l platform. |
 
