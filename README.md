@@ -20,4 +20,5 @@ The docker container development, including:
 | myopencv_armv7l | Test OpenCV container image for armv7l platform. |
 | opencv_baseimage_x86 | OpenCV baseimage from Ubuntu-16.04 on x86 platform. |
 | opencv_baseimage_armv7l | OpenCV baseimage image from Debian/Jessie on armv7l platform. |
+| video_test | Video test image from opencv_baseimage. Demo how to access local video file and host camera in docker. |
 
