@@ -23,3 +23,10 @@ The docker container development, including:
 | video_test | Video test image from opencv_baseimage. Demo how to access local video file and host camera in docker. |
 | live_video | live_video image from opencv_baseimage. Demo how to build live video stream web service based on flask. |
 
+## Services_dev
+The micorservices applications development, including:
+
+|   source   | Description |
+|:----------:|-------------|
+| SmartSurveillance | Smart surveillance services for video stream analysis. |
+
