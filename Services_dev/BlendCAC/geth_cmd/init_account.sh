@@ -4,7 +4,7 @@
 rm -rf ../account/geth
 
 #Initialize miners
-geth --datadir ../account init genesis.json
+geth --datadir ../account init ../node_data/genesis.json
 
 #Create accounts
 #geth --datadir ../account account new
