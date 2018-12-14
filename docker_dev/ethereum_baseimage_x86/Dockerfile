@@ -71,7 +71,7 @@ RUN export PATH=$PATH:/usr/local/go/bin && \
 
 
 
-# ----------------------------------- Install openssh ------------------------------------
+# ========================================== Install openssh =========================================
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 RUN echo 'root:samuelxu999' | chpasswd
@@ -86,7 +86,16 @@ RUN apt-get autoremove -y && apt-get autoclean -y
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-# ---------------------- Setup docker user account -------------
+# ========================== PATH Configure for root ================== 
+# ------------------------- Add GOROOT and append to PATH ---------------
+RUN echo 'export GOROOT=/usr/local/go' >> ~/.bashrc && \
+	echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.bashrc
+
+# ------------------- Add GOETHEREUM and append to PATH -----------------
+RUN echo 'export GOETHEREUM=/opt/go-ethereum/build' >> ~/.bashrc && \
+	echo 'export PATH=$PATH:$GOETHEREUM/bin' >> ~/.bashrc
+
+# =========================== Setup docker user account ==================================
 # Add user so that container does not run as root 
 RUN useradd -m docker 
 RUN echo "docker:samuelxu999" | chpasswd 

@@ -35,7 +35,7 @@ elif [ "start" == "$OPERATION" ] ; then
 		-p $PORT:30303 \
 		-v $VOLUME_ACCOUNT:/home/docker/account \
 		-v $(pwd)/node_data:/home/docker/node_data \
-		--name=$CONTAINER_NAME $IMAGE_NAME
+		--name=$CONTAINER_NAME $IMAGE_NAME 
 # Stop container		
 elif [ "stop" == "$OPERATION" ] ; then
 	docker container stop $CONTAINER_NAME

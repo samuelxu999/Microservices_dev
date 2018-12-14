@@ -1,26 +1,31 @@
 #!/bin/bash
 
-IMAGE_NAME="geth_node"
-
 OPERATION=$1
+IMAGE_NAME=$2
 
+# Check image name
+if [[ "" == $2 ]]; then
+	IMAGE_NAME="geth_node"
+	#echo "Use default image $IMAGE_NAME ...!"
+fi
+
+# Liat all image
 if [[ "list" == $OPERATION ]]; then
-	echo "List image "$IMAGE_NAME" ...!"
-	#docker image ls $IMAGE_NAME
-	docker image ls
-	exit 0
-fi
+	echo "List image $IMAGE_NAME ...!"
+	docker image ls $IMAGE_NAME
+	#docker image ls
 
-if [[ "make" == $OPERATION ]]; then
-	echo "Start make "$IMAGE_NAME" ...!"
+# Make image
+elif [[ "make" == $OPERATION ]]; then
+	echo "Start make $IMAGE_NAME ...!"
 	docker build -t $IMAGE_NAME .
-	exit 0
-fi
 
-if [[ "clean" == $OPERATION ]]; then
-	echo "Remove "$IMAGE_NAME" ...!"
+# Clean image given IMAGE_NAME
+elif [[ "clean" == $OPERATION ]]; then
+	echo "Remove $IMAGE_NAME ...!"
 	docker image rm -f $IMAGE_NAME
-	exit 0
+
+else
+	echo "Usage $0 cmd[list|make|clean|] image_name"
 fi
 
-echo "Usage: $0 list|make|clean ...!"
