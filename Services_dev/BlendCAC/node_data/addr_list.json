@@ -1,5 +1,9 @@
 {
-	"lenovo_ubuntu": "0x7e16a0165e2000b0b1d4e62d892b8fdef6554e7a",
+	"lenovo_miner1_0": "0x3d40fad73c91aed74ffbc1f09f4cde7cce533671",
+	"lenovo_miner1_1": "0x62c7db36889cf94288f8bc567f3d32a4aa8f90a0",
+	"lenovo_miner2_0": "0x13b126c92d0fc254c4a8bf414b60953d3fdcd9cb",
+	"lenovo_miner2_1": "0x2315f8459dad537954e1b61064f3fc870b6bcf14",
+	"lenovo_docker": "0x7e16a0165e2000b0b1d4e62d892b8fdef6554e7a",
 	"sam_ubuntu": "0xdcbe88e1ba58cd7eae1ec9cc9149b5788c7b6485",
 	"ussc2104-lab1": "0x7881d778cc85ff7b385e72cd960b456e1ab22f95",
 	"ussc2104-lab2": "0x7d0b094d23799467622c0f37488f8e272b1bbbc1",
