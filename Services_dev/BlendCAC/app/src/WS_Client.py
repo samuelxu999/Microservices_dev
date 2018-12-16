@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
 
 '''
 ========================
@@ -14,10 +14,9 @@ import requests
 import datetime
 import json
 
-from CapAC_Policy import CapToken
+#from CapAC_Policy import CapToken
 
 import sys
-sys.path.append('../SGW_API/')
 from utilities import DatetimeUtil, TypesUtil, FileUtil
 from wrapper_pyca import Crypto_DSA
 
@@ -100,7 +99,7 @@ def test_search(data_args={}):
 		params['project_id']=0
 
 	#print(WSClient.Get_Datasets('http://128.226.79.41/test/api/v1.0/dt', data_args))
-	print(WSClient.Get_DataByID('http://128.226.79.41/test/api/v1.0/dt/project', params, data_args))
+	print(WSClient.Get_DataByID('http://128.226.77.237:8080/test/api/v1.0/dt/project', params, data_args))
     
 def test_add(data_args={}):
 	project = {
@@ -220,9 +219,9 @@ def generate_token():
 def test_CapAC():
 	#token_data=generate_token()
 	#CapToken.save_token(token_data, 'token_data.dat')
-	token_data=CapToken.load_token('token_data.dat')
+	#token_data=CapToken.load_token('token_data.dat')
 	#CapToken.display_token(token_data)
-	
+	token_data=[]
 	#params = {'project_id':'2'}
 	data_args = {'project_id':'2', 'token_data': token_data}
 	

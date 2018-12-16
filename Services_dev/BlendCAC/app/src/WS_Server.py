@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
 
 '''
 ========================
@@ -14,7 +14,7 @@ import datetime
 import json
 from flask import Flask, jsonify
 from flask import abort,make_response,request
-from CapAC_Policy import CapToken, CapPolicy
+#from CapAC_Policy import CapToken, CapPolicy
 
 app = Flask(__name__)
 
@@ -86,8 +86,8 @@ def get_project():
 		abort(401, {'message': 'Token missing, deny access'})
 		
 	#Authorization process
-	if(not CapPolicy.is_valid_access_request(request)):
-		abort(401, {'message': 'Authorization fail, deny access'})
+	#if(not CapPolicy.is_valid_access_request(request)):
+	#	abort(401, {'message': 'Authorization fail, deny access'})
 	#print request.data
 	project_id = request.args.get('project_id', default = 1, type = int)
 	#project_id = int(request.args['project_id'])
@@ -106,8 +106,8 @@ def create_project():
 		abort(401, {'message': 'Token missing, deny access'})
 	
 	#Authorization process
-	if(not CapPolicy.is_valid_access_request(request)):
-		abort(401, {'message': 'Authorization fail, deny access'})
+	#if(not CapPolicy.is_valid_access_request(request)):
+	#	abort(401, {'message': 'Authorization fail, deny access'})
 		
 	if not request.json:
 		abort(400, {'message': 'No data in parameter for operation.'})
@@ -133,8 +133,8 @@ def update_project():
 		abort(401, {'message': 'Token missing, deny access'})
 	
 	#Authorization process
-	if(not CapPolicy.is_valid_access_request(request)):
-		abort(401, {'message': 'Authorization fail, deny access'})
+	#if(not CapPolicy.is_valid_access_request(request)):
+	#	abort(401, {'message': 'Authorization fail, deny access'})
 		
 	if not request.json:
 		abort(400, {'message': 'No data in parameter for operation.'})
@@ -180,8 +180,8 @@ def delete_project():
 		abort(401, {'message': 'Token missing, deny access'})
 	
 	#Authorization process
-	if(not CapPolicy.is_valid_access_request(request)):
-		abort(401, {'message': 'Authorization fail, deny access'})
+	#if(not CapPolicy.is_valid_access_request(request)):
+	#	abort(401, {'message': 'Authorization fail, deny access'})
 		
 	if not request.json:
 		abort(400, {'message': 'No data in parameter for operation.'})

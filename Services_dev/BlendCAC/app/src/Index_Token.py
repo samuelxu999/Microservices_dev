@@ -118,36 +118,40 @@ if __name__ == "__main__":
 	http_provider = 'http://localhost:8042'
 	contract_addr = '0xb7e549d21afa4c6fc672a37ef00bfab0ca6d81a8'
 	contract_config = './contracts/IndexToken.json'
-	addr_list = './addr_list.json'
+	addr_list = '../../node_data/addr_list.json'
 
+	#------------------------- show account info ---------------------------------
 	#Get account address
-	accountAddr=IndexToken.getAddress('lenovo_ubuntu', addr_list)
-	print("Account: " + accountAddr)
+	accountAddr=IndexToken.getAddress('lenovo_miner1_0', addr_list)
+
 	#new ABACToken object
 	mytoken=IndexToken(http_provider, contract_addr, contract_config)
 	#mytoken.Show_ContractInfo()
 
+	# get host account
+	accounts = mytoken.getAccounts()
+	print("Host accounts: %s" %(accounts))
+
+	#display selected account and balance
+	balance = mytoken.getBalance(accountAddr)
+	print("Account: %s" %(accountAddr))
+	print("Balance: %f" %(balance))
+
 
 	#------------------------- test contract API ---------------------------------
-	#getAccounts
-	accounts = mytoken.getAccounts()
-	balance = mytoken.getBalance('0x7e16a0165e2000b0b1d4e62d892b8fdef6554e7a')
-	print(accounts)
-	print(balance)
-
 	#Read token data using call
 	token_data=mytoken.getIndexToken('1')
 	IndexToken.print_tokendata(token_data)
 
 	#read node data using call
-	token_data=mytoken.getAuthorizedNodes()
-	print(token_data)
+	node_data=mytoken.getAuthorizedNodes()
+	print(node_data)
 
 	#Send transact
 	#mytoken.initIndexToken('1');
 	#mytoken.setIndexToken('1', 'dave')
 
-	node_address = IndexToken.getAddress('lenovo_ubuntu', addr_list)
+	node_address = IndexToken.getAddress('lenovo_miner1_0', addr_list)
 	#mytoken.addAuthorizedNodes(node_address)
 	#mytoken.removeAuthorizedNodes(node_address)
 

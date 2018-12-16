@@ -19,7 +19,7 @@ from Index_Token import IndexToken
 #global variable
 http_provider = 'http://localhost:8042'
 contract_addr = '0xb7e549d21afa4c6fc672a37ef00bfab0ca6d81a8'
-contract_config = '../IndexAuthContract/build/contracts/IndexToken.json'
+contract_config = './contracts/IndexToken.json'
 
 #new CapACToken object
 mytoken=IndexToken(http_provider, contract_addr, contract_config)
@@ -118,6 +118,7 @@ def test_pyca():
 	pass
 
 def test_IndexAuth():
+	addr_list = '../../node_data/addr_list.json'
 	#set sample record 
 	record_block={}
 	record_block['id']='1'
@@ -153,7 +154,7 @@ def test_IndexAuth():
 	#mytoken.setIndexToken(record_block['id'], hash_str);
 
 	#4) set authrozied nodes
-	node_address = IndexToken.getAddress('RPi1_node_0', '../IndexAuthContract/test/addr_list.json')
+	node_address = IndexToken.getAddress('PI_Node_1', addr_list)
 	#mytoken.addAuthorizedNodes(node_address)
 	#mytoken.removeAuthorizedNodes(node_address)
 

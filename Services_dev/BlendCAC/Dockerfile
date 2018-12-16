@@ -38,7 +38,8 @@ WORKDIR ${HOME}/app
 # bootnode port
 EXPOSE 30303
 EXPOSE 8042
+EXPOSE 80
 
 #Default command
-#CMD ["/home/docker/geth_cmd/startminer.sh"]
+CMD ["/home/docker/app/src/WS_Server.py"]
 #ENTRYPOINT ["${HOME}/geth_cmd/startminer.sh"]
