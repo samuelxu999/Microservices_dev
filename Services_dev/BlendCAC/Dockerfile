@@ -2,11 +2,6 @@
 FROM samuelxu999/ethereum_baseimage:x86
 #FROM samuelxu999/ethereum_baseimage:armv7l
 
-# ================================ Install Independencies =============================
-#RUN python3 -m pip install flask
-#RUN python -m pip install -r requirements.txt
-#RUN python3 -m pip install -r requirements.txt
-
 # ============================ geth work directory setup =============================
 # Setting up working directory
 ENV HOME /home/docker
@@ -27,7 +22,18 @@ COPY ./geth_cmd/ ${HOME}/geth_cmd/
 RUN chown -R docker:docker ${HOME}/geth_cmd
 RUN chmod +x ${HOME}/geth_cmd/*.sh
 
-WORKDIR ${HOME}
+# ============================ app work directory setup =============================
+# New account data dir 
+RUN mkdir ${HOME}/app
+#Copy scripts into the container at ${HOME}/app
+COPY ./app/ ${HOME}/app/
+RUN chown -R docker:docker ${HOME}/app
+
+# ----------- Install requirements ------------
+#RUN python -m pip install -r ${HOME}/app/requirements.txt
+RUN python3 -m pip install -r ${HOME}/app/requirements.txt
+
+WORKDIR ${HOME}/app
 
 # bootnode port
 EXPOSE 30303
