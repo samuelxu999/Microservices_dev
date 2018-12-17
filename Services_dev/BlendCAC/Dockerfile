@@ -31,7 +31,12 @@ RUN chown -R docker:docker ${HOME}/app
 
 # ----------- Install requirements ------------
 #RUN python -m pip install -r ${HOME}/app/requirements.txt
+RUN apt-get update -y
+RUN apt-get install -y libssl-dev libffi-dev
 RUN python3 -m pip install -r ${HOME}/app/requirements.txt
+
+# Minimize image size 
+RUN apt-get autoremove -y && apt-get autoclean -y
 
 WORKDIR ${HOME}/app
 

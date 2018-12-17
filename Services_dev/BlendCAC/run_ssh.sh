@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # -d Run container in background and print container ID
-# -p Publish a container's port(s) to the host
+# -p Publish a container's port(s) to the host. http-8080:80 ssh-8022:22
 # --name=@ specify the name of the container(opencv_base); the image you want to run the container from (here opencv_baseimage); 
 
 IMAGE_NAME="geth_node"
@@ -30,6 +30,7 @@ elif [ "start" == "$OPERATION" ] ; then
 	fi
 
 	docker run -d --rm \
+		-p 8080:80 \
 		-p 8022:22 \
 		-p $RPC_PORT:8042 \
 		-p $PORT:30303 \

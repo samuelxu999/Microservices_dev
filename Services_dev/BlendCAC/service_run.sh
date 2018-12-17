@@ -9,7 +9,7 @@ if  [ "start" == "$OPERATION" ] ; then
 	./run_ssh.sh start 8142 30305
 
 	# run geth as node
-	./docker_exec.sh ethereum-node root /home/docker/geth_cmd/startnode.sh
+	./docker_exec.sh ethereum-node docker /home/docker/geth_cmd/startnode.sh
 
 	# run sshd to start ssh server
 	./docker_exec.sh ethereum-node root /home/docker/geth_cmd/sshd_start.sh
