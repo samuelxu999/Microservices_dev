@@ -14,8 +14,6 @@ import requests
 import datetime
 import json
 
-#from CapAC_Policy import CapToken
-
 import sys
 from utilities import DatetimeUtil, TypesUtil, FileUtil
 from wrapper_pyca import Crypto_DSA
@@ -78,16 +76,15 @@ class WSClient(object):
 
         return json_response
 
-def test_func():
+def test_func(host_ip, index_id):
 	filepath = './features/0_2_person1/13.2.52.txt'
 	filepath0 = './features/0_2_person1/13.4.53.txt'
-
-	index_id = '1'
+	
 	start_time=time.time()
-
-	print(WSClient.getIndexToken('128.226.77.237:8080', index_id))
-	print(WSClient.getAuthorizedNodes('128.226.77.237:8080'))	
-	print(WSClient.verify_indexToken('128.226.77.237:8080', index_id, filepath))
+	
+	print(WSClient.getIndexToken(host_ip, index_id))
+	print(WSClient.getAuthorizedNodes(host_ip))	
+	print(WSClient.verify_indexToken(host_ip, index_id, filepath))
 	
 	end_time=time.time()
 
@@ -102,5 +99,9 @@ def test_func():
 
 	
 if __name__ == "__main__":
-	test_func()
-	pass
+    if(len(sys.argv)<2):
+        print("Usage: %s host_ip index_id" %(sys.argv[0]))
+        exit()
+    host_ip = sys.argv[1]
+    index_id = sys.argv[2]
+    test_func(host_ip, index_id)

@@ -14,8 +14,6 @@ import requests
 import datetime
 import json
 
-from CapACToken import CapACToken
-
 import sys
 from utilities import DatetimeUtil, TypesUtil, FileUtil
 
@@ -59,14 +57,24 @@ class WSClient(object):
         json_response = response.json()
 
         return json_response
+    
+    '''
+    Get BC_account given node_name
+    @node_name: ip_address:port_num
+    @datafile: node account datafile path
+    '''
+    @staticmethod
+    def getAddress(node_name, datafile):
+        address_json = json.load(open(datafile))
+        return address_json[node_name]
 
-def test_func():
+def test_func(host_ip, node_name):
 	addr_list = '../../node_data/addr_list.json'
-	node_address = CapACToken.getAddress('PI_Node_1', addr_list)
-	host_addr = '128.226.77.237:8080'
+	node_address = WSClient.getAddress(node_name, addr_list)
+	
 	# construct data argument
 	data_args = {}
-	data_args ['host_ip'] = host_addr
+	data_args ['host_ip'] = host_ip
 	data_args ['host_address'] = node_address
 	data_args ['url_rule'] = '/BlendCAC/api/v1.0/getCapToken'
 
@@ -88,5 +96,10 @@ def test_func():
 
 	
 if __name__ == "__main__":
-	test_func()
-	pass
+    if(len(sys.argv)<2):
+        print("Usage: %s host_ip node_name" %(sys.argv[0]))
+        exit()
+    host_ip = sys.argv[1]
+    node_name = sys.argv[2]
+    test_func(host_ip, node_name)
+	
