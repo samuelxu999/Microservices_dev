@@ -2,6 +2,7 @@
 
 # -d Run container in background and print container ID
 # -p Publish a container's port(s) to the host. http-8080:80 ssh-8022:22
+# -v /etc/localtime:/etc/localtime:ro make sure docker's time syncs with that of the host
 # --name=@ specify the name of the container(opencv_base); the image you want to run the container from (here opencv_baseimage); 
 
 IMAGE_NAME="indexauth_node"
@@ -34,6 +35,7 @@ elif [ "start" == "$OPERATION" ] ; then
 		-p 8022:22 \
 		-p $RPC_PORT:8042 \
 		-p $PORT:30303 \
+		-v /etc/localtime:/etc/localtime:ro \
 		-v $VOLUME_ACCOUNT:/home/docker/account \
 		-v $(pwd)/node_data:/home/docker/node_data \
 		--name=$CONTAINER_NAME $IMAGE_NAME 
