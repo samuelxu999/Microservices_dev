@@ -1,5 +1,5 @@
-# BlendCAC
-This docker image built on ethereum_baseimage  to act as blockchain node.
+# IndexAuth
+This docker image built on ethereum_baseimage  to act as blockchain node to support CapAC access control microservices
 
 The overview of contents of project are:
 
@@ -16,6 +16,7 @@ Before build docker, run $dos2unix geth_cmd/*.sh to transfer scripts to unix for
 | startgeth.sh | startup node wihout unlock account |
 | startminer.sh | startup node as miner and unlock base account |
 | startnode.sh | startup node as node without mining and unlock base account.|
+| sshd_start.sh | start sshd service in container |
 
 
 
@@ -27,6 +28,18 @@ Before build docker, run $dos2unix geth_cmd/*.sh to transfer scripts to unix for
 | static-nodes.json | Global record for all paired static nodes information on private entereum network. Copy all or part of static nodes information to each account folder to configurate pared nodes. |
 | password.sec | Default to new account. Only used for test.|
 
+
+## app
+
+|   source   | Description |
+|:----------:|-------------|
+| requirements.txt | dependency requirement for app.|
+| src/contracts | smart contract ABI json data |
+| BlendCapAC_Policy.py | This module provide functions and encapsulation of CapAC policy. |
+| CapACToken.py | This module provide encapsulation of web3.py API to interact with exposed ABI of src/contracts/CapACToken.json |
+| utilities.py | This module provide utility functions to support project. |
+| Test_Client.py | This module provide encapsulation of client API that access to Web service. |
+| BlendCAC_server.py | This module provide encapsulation of server API that handle and response client's request. |
 
 ## build.sh
 
@@ -43,6 +56,10 @@ Run the docker image, just execute run_bash.sh. After container startup, run sam
 ## docker_exec.sh
 
 Run 'docker exec command' to interact with tools and scripts in container.
+
+## service_run.sh
+
+Instruct hwo to run 'docker_exec.sh' to startup services in container.
 
 
 

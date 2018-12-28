@@ -5,7 +5,7 @@ IMAGE_NAME=$2
 
 # Check image name
 if [[ "" == $2 ]]; then
-	IMAGE_NAME="geth_node"
+	IMAGE_NAME="blendcac_node"
 	#echo "Use default image $IMAGE_NAME ...!"
 fi
 

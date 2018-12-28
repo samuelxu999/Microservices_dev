@@ -5,8 +5,8 @@
 # -v @volume:@docker path. use volume to  
 # --name=@ specify the name of the container (here rdev); the image you want to run the container from (here ubuntu-r); the process you want to run in the container (here bash). (The last step of specifying a process is only necessary if you have not set a default CMD or ENTRYPOINT for your image.)
 
-IMAGE_NAME="geth_node"
-CONTAINER_NAME="ethereum-node"
+IMAGE_NAME="blendcac_node"
+CONTAINER_NAME="blendcac-service"
 VOLUME_ACCOUNT="gethAccount"
 
 RPC_PORT=$1
@@ -30,9 +30,9 @@ fi
 
 # execute docker run command
 docker run -i -t --rm \
+	-p 8080:80 \
 	-p $RPC_PORT:8042 \
 	-p $PORT:30303 \
-	-u docker \
 	--privileged=true \
 	-v $VOLUME_ACCOUNT:/home/docker/account \
 	-v $(pwd)/node_data:/home/docker/node_data \

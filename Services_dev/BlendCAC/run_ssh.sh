@@ -4,8 +4,8 @@
 # -p Publish a container's port(s) to the host. http-8080:80 ssh-8022:22
 # --name=@ specify the name of the container(opencv_base); the image you want to run the container from (here opencv_baseimage); 
 
-IMAGE_NAME="geth_node"
-CONTAINER_NAME="ethereum-node"
+IMAGE_NAME="blendcac_node"
+CONTAINER_NAME="blendcac-service"
 VOLUME_ACCOUNT="gethAccount"
 
 OPERATION=$1

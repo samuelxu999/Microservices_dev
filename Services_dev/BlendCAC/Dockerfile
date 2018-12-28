@@ -38,7 +38,7 @@ RUN python3 -m pip install -r ${HOME}/app/requirements.txt
 # Minimize image size 
 RUN apt-get autoremove -y && apt-get autoclean -y
 
-WORKDIR ${HOME}/app
+WORKDIR ${HOME}/app/src
 
 # bootnode port
 EXPOSE 30303
@@ -46,5 +46,5 @@ EXPOSE 8042
 EXPOSE 80
 
 #Default command
-CMD ["/home/docker/app/src/WS_Server.py"]
+CMD ["./BlendCAC_server.py"]
 #ENTRYPOINT ["${HOME}/geth_cmd/startminer.sh"]

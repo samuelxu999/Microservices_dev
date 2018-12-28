@@ -40,8 +40,8 @@ Before build docker, run $dos2unix geth_cmd/*.sh to transfer scripts to unix for
 | Index_Token.py | This module provide encapsulation of web3.py API to interact with exposed ABI of src/contracts/IndexToken.json |
 | wrapper_pyca.py | This module provide wrapper of pyca lib for security function, such as AES, hash. |
 | utilities.py | This module provide utility functions to support project. |
-| WS_Client.py | This module provide encapsulation of client API that access to Web service. |
-| WS_Server.py | This module provide encapsulation of server API that handle and response client's request. |
+| Test_Client.py | This module provide encapsulation of client API that access to Web service. |
+| IndexAuth_Server.py | This module provide encapsulation of server API that handle and response client's request. |
 
 ## build.sh
 
