@@ -22,7 +22,7 @@ now = datetime.datetime.now()
 datestr=now.strftime("%Y-%m-%d")
 timestr=now.strftime("%H:%M:%S")
 
-Secirity_ENABLE = 1
+Secirity_ENABLE = 2
 
 #Defining dictionary dataset model
 projects = [
@@ -75,22 +75,23 @@ def get_projects():
 		#Token missing, deny access
 		if(request.data=='{}'):
 			abort(401, {'message': 'Token missing, deny access'})
-		# construct data argument
-		data_args = {}
-		data_args ['host_ip'] = '128.226.78.89:8080'
-		data_args ['host_address'] = request.json['host_address']
-		data_args ['url_rule'] = request.json['url_rule']
+		#----------------------Authentication process--------------------
+		if(Secirity_ENABLE==1):
+			indexAuth_ret = SrvAPI.verify_indexToken('128.226.76.114:8080', request.json['index_id'], request.json['filepath'])	
+			#Authentication process
+			if(not indexAuth_ret['data']):
+				abort(401, {'message': 'Hashed Index Authentication fail, deny access'})
+		#------------------------Access control process	-------------------
+		if(Secirity_ENABLE==2):
+			# construct data argument
+			data_args = {}
+			data_args ['host_ip'] = '128.226.78.89:8080'
+			data_args ['host_address'] = request.json['host_address']
+			data_args ['url_rule'] = request.json['url_rule']
 
-		#host_ip = request.json['host_ip']
-		indexAuth_ret = SrvAPI.verify_indexToken('128.226.76.114:8080', request.json['index_id'], request.json['filepath'])	
-		#Authentication process
-		if(not indexAuth_ret['data']):
-			abort(401, {'message': 'Hashed Index Authentication fail, deny access'})
-
-		#Access control process	
-		CapAC_ret = CapAC_ret = SrvAPI.isValidAccess(data_args)
-		if(not CapAC_ret['data']):
-			abort(401, {'message': 'Access right validation fail, deny projects querying'})
+			CapAC_ret = CapAC_ret = SrvAPI.isValidAccess(data_args)
+			if(not CapAC_ret['data']):
+				abort(401, {'message': 'Access right validation fail, deny projects querying'})
 
 	return jsonify({'result': 'Succeed', 'data': projects}), 201
 	
@@ -101,22 +102,23 @@ def get_project():
 		#Token missing, deny access
 		if(request.data=='{}'):
 			abort(401, {'message': 'Token missing, deny access'})
-		# construct data argument
-		data_args = {}
-		data_args ['host_ip'] = '128.226.78.89:8080'
-		data_args ['host_address'] = request.json['host_address']
-		data_args ['url_rule'] = request.json['url_rule']
+		#----------------------Authentication process--------------------
+		if(Secirity_ENABLE==1):
+			indexAuth_ret = SrvAPI.verify_indexToken('128.226.76.114:8080', request.json['index_id'], request.json['filepath'])	
+			#Authentication process
+			if(not indexAuth_ret['data']):
+				abort(401, {'message': 'Hashed Index Authentication fail, deny access'})
+		#------------------------Access control process	-------------------
+		if(Secirity_ENABLE==2):
+			# construct data argument
+			data_args = {}
+			data_args ['host_ip'] = '128.226.78.89:8080'
+			data_args ['host_address'] = request.json['host_address']
+			data_args ['url_rule'] = request.json['url_rule']
 
-		#host_ip = request.json['host_ip']
-		indexAuth_ret = SrvAPI.verify_indexToken('128.226.76.114:8080', request.json['index_id'], request.json['filepath'])	
-		#Authentication process
-		if(not indexAuth_ret['data']):
-			abort(401, {'message': 'Hashed Index Authentication fail, deny access'})
-
-		#Access control process	
-		CapAC_ret = CapAC_ret = SrvAPI.isValidAccess(data_args)
-		if(not CapAC_ret['data']):
-			abort(401, {'message': 'Access right validation fail, deny projects querying'})
+			CapAC_ret = CapAC_ret = SrvAPI.isValidAccess(data_args)
+			if(not CapAC_ret['data']):
+				abort(401, {'message': 'Access right validation fail, deny projects querying'})
 
 	#print request.data
 	project_id = request.args.get('project_id', default = 1, type = int)
