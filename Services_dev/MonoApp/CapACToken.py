@@ -130,7 +130,7 @@ if __name__ == "__main__":
 	http_provider = 'http://localhost:8042'
 	contract_addr = '0x2fd1ecaf8d6ca9a566161895ea6650b85e76eb93'
 	contract_config = './contracts/CapACToken.json'
-	addr_list = '../../node_data/addr_list.json'
+	addr_list = './addr_list.json'
 
 	#new CapACToken object
 	myCapACtoken=CapACToken(http_provider, contract_addr, contract_config)
