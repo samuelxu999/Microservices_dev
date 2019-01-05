@@ -9,10 +9,10 @@ if  [ "start" == "$OPERATION" ] ; then
 	./run_ssh.sh start 8142 30305
 
 	# run geth as node
-	./docker_exec.sh ethereum-node docker /home/docker/geth_cmd/startnode.sh
+	./docker_exec.sh blendcac-service docker /home/docker/geth_cmd/startnode.sh &>/dev/null &
 
 	# run sshd to start ssh server
-	./docker_exec.sh ethereum-node root /home/docker/geth_cmd/sshd_start.sh
+	./docker_exec.sh blendcac-service root /home/docker/geth_cmd/sshd_start.sh &>/dev/null &
 
 # Stop container
 elif [ "stop" == "$OPERATION" ] ; then
