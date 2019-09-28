@@ -127,10 +127,12 @@ class CapACToken(object):
 
 
 if __name__ == "__main__":
-	http_provider = 'http://localhost:8042'
-	contract_addr = '0x2fd1ecaf8d6ca9a566161895ea6650b85e76eb93'
-	contract_config = './contracts/CapACToken.json'
 	addr_list = '../../node_data/addr_list.json'
+
+	http_provider = 'http://localhost:8042'
+	contract_addr = CapACToken.getAddress('CapACToken', addr_list)
+	contract_config = './contracts/CapACToken.json'
+
 
 	#new CapACToken object
 	myCapACtoken=CapACToken(http_provider, contract_addr, contract_config)
@@ -147,7 +149,7 @@ if __name__ == "__main__":
 
 	#------------------------------ call functions test -------------------------
 	#Read token data using call
-	node_address = CapACToken.getAddress('PI_Node_1', addr_list)
+	node_address = CapACToken.getAddress('Desk_PI_Plus_Sam2', addr_list)
 	token_data=myCapACtoken.getCapTokenStatus(node_address)
 	#token_data=myCapACtoken.getCapTokenStatus(accounts[0]);
 	CapACToken.print_tokendata(token_data)	

@@ -23,8 +23,9 @@ datestr=now.strftime("%Y-%m-%d")
 timestr=now.strftime("%H:%M:%S")
 
 #global variable
+addr_list = '../../node_data/addr_list.json'
 http_provider = 'http://localhost:8042'
-contract_addr = '0x2fd1ecaf8d6ca9a566161895ea6650b85e76eb93'
+contract_addr = CapACToken.getAddress('CapACToken', addr_list)
 contract_config = './contracts/CapACToken.json'
 
 #new CapACToken object
@@ -175,7 +176,6 @@ class CapPolicy(object):
 		return True
 
 def test_CapACToken():
-	addr_list = '../../node_data/addr_list.json'
 
 	# ========== get host account =========
 	accounts = myCapACToken.getAccounts()

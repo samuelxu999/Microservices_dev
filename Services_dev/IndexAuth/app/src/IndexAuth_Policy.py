@@ -17,8 +17,9 @@ from Index_Token import IndexToken
 
 
 #global variable
+addr_list = '../../node_data/addr_list.json'
 http_provider = 'http://localhost:8042'
-contract_addr = '0xb7e549d21afa4c6fc672a37ef00bfab0ca6d81a8'
+contract_addr = IndexToken.getAddress('IndexToken', addr_list)
 contract_config = './contracts/IndexToken.json'
 
 #new IndexToken object
@@ -161,7 +162,7 @@ def test_IndexAuth():
 	#mytoken.setIndexToken(record_block['id'], hash_str);
 
 	#4) set authrozied nodes
-	node_address = IndexToken.getAddress('TKB1_node1', addr_list)
+	node_address = IndexToken.getAddress('Desk_PI_Plus_Sam2', addr_list)
 	#mytoken.addAuthorizedNodes(node_address)
 	#mytoken.removeAuthorizedNodes(node_address)
 
