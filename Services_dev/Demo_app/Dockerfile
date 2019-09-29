@@ -2,6 +2,16 @@
 FROM samuelxu999/ethereum_baseimage:x86
 #FROM samuelxu999/ethereum_baseimage:armv7l
 
+# ================ Configure geth_cmd dir to save geth command scripts ===============
+RUN mkdir ${HOME}/geth_cmd
+RUN chown -R docker:docker ${HOME}/geth_cmd
+# -------------------- Add geth_cmd to docker ------------------
+#Copy the geth command scripts into the container at ${HOME}/geth_cmd
+COPY ./geth_cmd/ ${HOME}/geth_cmd/
+
+# Change owner and group to docker
+RUN chown -R docker:docker ${HOME}/geth_cmd
+RUN chmod +x ${HOME}/geth_cmd/*.sh
 
 # ============================ app work directory setup =============================
 # Setting up working directory
