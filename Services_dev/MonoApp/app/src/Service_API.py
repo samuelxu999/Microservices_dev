@@ -19,6 +19,7 @@ from utilities import DatetimeUtil, TypesUtil, FileUtil
 
 from IndexAuth_Policy import IndexPolicy
 from BlendCapAC_Policy import CapPolicy
+from Auth_Policy import AuthPolicy
 
 now = datetime.datetime.now()
 datestr=now.strftime("%Y-%m-%d")
@@ -79,44 +80,64 @@ class SrvAPI(object):
     def isValidAccess(req_args):
         return CapPolicy.is_valid_access_request(req_args)
 
+    '''
+    Get Vnode information
+    @node_addr: node BC address
+    '''
+    @staticmethod
+    def getVNodeInfo(node_addr):
+        json_data=AuthPolicy.get_VNodeInfo(node_addr)
+        return json_data
+
+    '''
+    Verify identity
+    @host_addr: ip_address:port_num
+    '''
+    @staticmethod
+    def isValidID(req_args):
+        return AuthPolicy.verify_AuthToken(req_args)
+
 
 def test_func(param_str):
-	filepath = './features/0_2_person1/13.2.52.txt'
-	filepath0 = './features/0_2_person1/13.4.53.txt'
+    filepath = './features/0_2_person1/13.2.52.txt'
+    filepath0 = './features/0_2_person1/13.4.53.txt'
 
-	addr_list = './addr_list.json'
-	param_args=param_str.split(',')
+    addr_list = '../../node_data/addr_list.json'
+    param_args=param_str.split(',')
 
-	index_id = param_args[0]
-	node_name = param_args[1]
-	node_address = SrvAPI.getAddress(node_name, addr_list)
+    index_id = param_args[0]
+    node_name = param_args[1]
+    node_address = SrvAPI.getAddress(node_name, addr_list)
 
-	# construct data argument
-	#data_args = {}
-	#data_args ['host_address'] = node_address
-	#data_args ['url_rule'] = '/BlendCAC/api/v1.0/getCapToken'
-	
-	start_time=time.time()
-	
-	print(SrvAPI.getIndexToken(index_id))
-	print(SrvAPI.getAuthorizedNodes())	
-	print(SrvAPI.verify_indexToken(index_id, filepath))
+    # construct data argument
+    #data_args = {}
+    #data_args ['host_address'] = node_address
+    #data_args ['url_rule'] = '/BlendCAC/api/v1.0/getCapToken'
+    
+    start_time=time.time()
+    
+    print(SrvAPI.getIndexToken(index_id))
+    print(SrvAPI.getAuthorizedNodes())  
+    print(SrvAPI.verify_indexToken(index_id, filepath))
 
-	print(SrvAPI.getCapToken(node_address))
-	#print(SrvAPI.isValidAccess(req_args))
-	
-	end_time=time.time()
+    print(SrvAPI.getCapToken(node_address))
+    #print(SrvAPI.isValidAccess(req_args))
+    
+    print(SrvAPI.getVNodeInfo(node_address))
+    #print(SrvAPI.verify_AuthToken(req_args))
+    
+    end_time=time.time()
 
         #calculate exec time
-	exec_time=end_time-start_time
-	
-	time_exec=format(exec_time*1000, '.3f')
-	print("Execution time is:%2.6f" %(exec_time))
-	
-	FileUtil.AddLine('exec_time_client.log', time_exec)
+    exec_time=end_time-start_time
+    
+    time_exec=format(exec_time*1000, '.3f')
+    print("Execution time is:%2.6f" %(exec_time))
+    
+    FileUtil.AddLine('exec_time_client.log', time_exec)
   
 
-	
+    
 if __name__ == "__main__":
     if(len(sys.argv)<2):
         print("Usage: %s param_list" %(sys.argv[0]))

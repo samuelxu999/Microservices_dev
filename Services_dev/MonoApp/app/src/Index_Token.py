@@ -115,14 +115,14 @@ class IndexToken(object):
 
 
 if __name__ == "__main__":
+	addr_list = '../../node_data/addr_list.json'
 	http_provider = 'http://localhost:8042'
-	contract_addr = '0xb7e549d21afa4c6fc672a37ef00bfab0ca6d81a8'
+	contract_addr = IndexToken.getAddress('IndexToken', addr_list)
 	contract_config = './contracts/IndexToken.json'
-	addr_list = './addr_list.json'
 
 	#------------------------- show account info ---------------------------------
 	#Get account address
-	accountAddr=IndexToken.getAddress('lenovo_miner1_0', addr_list)
+	accountAddr=IndexToken.getAddress('Desk_PI_Plus_Sam2', addr_list)
 
 	#new ABACToken object
 	mytoken=IndexToken(http_provider, contract_addr, contract_config)
@@ -151,7 +151,7 @@ if __name__ == "__main__":
 	#mytoken.initIndexToken('1');
 	#mytoken.setIndexToken('1', 'dave')
 
-	node_address = IndexToken.getAddress('lenovo_miner1_0', addr_list)
+	node_address = IndexToken.getAddress('Desk_PI_Plus_Sam2', addr_list)
 	#mytoken.addAuthorizedNodes(node_address)
 	#mytoken.removeAuthorizedNodes(node_address)
 

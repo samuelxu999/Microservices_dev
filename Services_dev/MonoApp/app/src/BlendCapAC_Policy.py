@@ -23,8 +23,9 @@ datestr=now.strftime("%Y-%m-%d")
 timestr=now.strftime("%H:%M:%S")
 
 #global variable
+addr_list = '../../node_data/addr_list.json'
 http_provider = 'http://localhost:8042'
-contract_addr = '0x2fd1ecaf8d6ca9a566161895ea6650b85e76eb93'
+contract_addr = CapACToken.getAddress('CapACToken', addr_list)
 contract_config = './contracts/CapACToken.json'
 
 #new CapACToken object
@@ -175,14 +176,13 @@ class CapPolicy(object):
 		return True
 
 def test_CapACToken():
-	addr_list = './addr_list.json'
 
 	# ========== get host account =========
 	accounts = myCapACToken.getAccounts()
 
 	# ========== Get account address =========
-	node1_address = myCapACToken.getAddress('PI_Node_1', addr_list)
-	node2_address = myCapACToken.getAddress('TKB1_node1', addr_list)
+	node1_address = myCapACToken.getAddress('Desk_PI_Plus_Sam1', addr_list)
+	node2_address = myCapACToken.getAddress('Desk_PI_Plus_Sam2', addr_list)
 	print("Account: " + node2_address)
 
 	# ============== Read token data using CapACToken call getCapTokenStatus() ========
@@ -192,8 +192,9 @@ def test_CapACToken():
 	# =========  Read token data using CapPolicy function get_token() =============
 	token_data=CapPolicy.get_token(node1_address)
 	print(token_data['VZone_master'])
-	ac = TypesUtil.string_to_json(token_data['authorization'])
-	print(ac['resource'])
+	if(token_data['authorization']!=''):
+		ac = TypesUtil.string_to_json(token_data['authorization'])
+		print(ac['resource'])
 
 	# =========  Write token data to 'token.dat' =============
 	#FileUtil.AddLine('token.dat', TypesUtil.json_to_string(token_data))

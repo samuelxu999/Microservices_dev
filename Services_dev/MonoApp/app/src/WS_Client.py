@@ -103,16 +103,16 @@ def test_search(data_args={}):
     
 
 	
-def test_CapAC(host_ip):
+def test_ServiceAccess(host_ip):
 	# set host id address
 	filepath = './features/0_2_person1/13.2.52.txt'
 	filepath0 = './features/6_10_person/14.52.38.txt'
 
-	addr_list = './addr_list.json'
+	addr_list = '../../node_data/addr_list.json'
 	
 	project_id = 1
 	index_id = 1
-	node_name = 'PI_Node_1'
+	node_name = 'Desk_PI_Plus_Sam1'
 	node_address = SrvAPI.getAddress(node_name, addr_list)
 
 	# construct data argument
@@ -145,9 +145,9 @@ if __name__ == "__main__":
         print("Usage: %s host_list" %(sys.argv[0]))
         exit()
     host_ip = sys.argv[1]
-    test_run = 10
+    test_run = 1
     wait_interval = 1
     for x in range(test_run):
-        test_CapAC(host_ip)
+        test_ServiceAccess(host_ip)
         time.sleep(wait_interval)
     pass

@@ -38,7 +38,7 @@ RUN python3 -m pip install -r ${HOME}/app/requirements.txt
 # Minimize image size 
 RUN apt-get autoremove -y && apt-get autoclean -y
 
-WORKDIR ${HOME}/app
+WORKDIR ${HOME}/app/src
 
 # bootnode port
 EXPOSE 30303

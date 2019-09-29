@@ -22,7 +22,7 @@ now = datetime.datetime.now()
 datestr=now.strftime("%Y-%m-%d")
 timestr=now.strftime("%H:%M:%S")
 
-Secirity_ENABLE = 2
+Secirity_ENABLE = 0
 
 #Defining dictionary dataset model
 projects = [
@@ -86,6 +86,11 @@ def get_projects():
 			CapAC_ret = SrvAPI.isValidAccess(request)
 			if(not CapAC_ret):
 				abort(401, {'message': 'Access right validation fail, deny projects querying'})
+		#------------------------Identity authentication process	-------------------
+		if(Secirity_ENABLE==3):
+			AuthID_ret = SrvAPI.isValidID(request)
+			if(not AuthID_ret):
+				abort(401, {'message': 'Identity authentication fail, deny projects querying'})
 
 	return jsonify({'result': 'Succeed', 'data': projects}), 201
 	
@@ -107,6 +112,11 @@ def get_project():
 			CapAC_ret = SrvAPI.isValidAccess(request)
 			if(not CapAC_ret):
 				abort(401, {'message': 'Access right validation fail, deny projects querying'})
+		#------------------------Identity authentication process	-------------------
+		if(Secirity_ENABLE==3):
+			AuthID_ret = SrvAPI.isValidID(request)
+			if(not AuthID_ret):
+				abort(401, {'message': 'Identity authentication fail, deny projects querying'})
 
 	#print request.data
 	project_id = request.args.get('project_id', default = 1, type = int)
