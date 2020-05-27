@@ -22,7 +22,7 @@ now = datetime.datetime.now()
 datestr=now.strftime("%Y-%m-%d")
 timestr=now.strftime("%H:%M:%S")
 
-Secirity_ENABLE = 0
+Secirity_ENABLE = 3
 
 #Defining dictionary dataset model
 projects = [
