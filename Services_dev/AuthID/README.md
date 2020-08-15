@@ -1,5 +1,5 @@
 # AuthID
-This docker image built on ethereum_baseimage  to act as blockchain node to support Authenticate ID microservices
+This docker image built on ethereum_baseimage to act as blockchain node to support identity authentication microservices
 
 The overview of contents of project are:
 
@@ -59,7 +59,7 @@ Run 'docker exec command' to interact with tools and scripts in container.
 
 ## service_run.sh
 
-Instruct hwo to run 'docker_exec.sh' to startup services in container.
+Instruct how to run 'docker_exec.sh' to startup services in container.
 
 
 

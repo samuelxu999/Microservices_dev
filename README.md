@@ -30,5 +30,12 @@ The micorservices applications development, including:
 
 |   source   | Description |
 |:----------:|-------------|
+| AuthID | Identity authentication services for smart public safety system. |
+| BlendCAC | Capability based access control services for smart public safety system. |
+| Demo_app | Microservices enabled client applicaion for smart public safety system. |
+| GethClient | Geth client container to run as a miner or node in Ethereum. |
+| IndexAuth | Hashed index authentication services for smart public safety system. |
+| MonoApp | Monolithic enabled client applicaion for smart public safety system. |
 | SmartSurveillance | Smart surveillance services for video stream analysis. |
+| TimeBanking | Service exchange container for Time Banking system. |
 
