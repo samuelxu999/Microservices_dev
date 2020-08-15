@@ -25,6 +25,27 @@ The docker container development, including:
 | ethereum_baseimage_x86 | Ethereum baseimage from Ubuntu-16.04 on x86 platform. |
 | ethereum_baseimage_armv7l | Ethereum baseimage from Ubuntu-16.04 on armv7l platform. |
 
+## contract_dev
+The truffle project folder to develop smart contracts that work as a underlying contract layer on Ethereum blockchain network.
+
+For smart contract development, please refer to [Truffle](https://truffleframework.com/docs) for truffle environment setup and usage. 
+
+* contract:
+
+	--- AuthToken.sol: smart contract for security service AuthID, an ideitity authentication mechanism.
+
+	--- CapACToken.sol: smart contract for security service BlendCAC, an Capability-based AC mechanism.
+
+	--- IndexToken.sol: smart contract for security service IndexAuth, an hashed value integrity verification mechanism.
+	
+	--- Migrations.sol: This is a separate Solidity file that manages and updates the status of your deployed smart contract. This file comes with every Truffle project, and is usually not edited.
+	
+* migrations:
+
+	--- 1_initial_migration.js: This file is the migration (deployment) script for the Migrations contract found in the Migrations.sol file.
+	
+	--- 2_deploy_contracts.js: This file is the migration (deployment) script for deploying our developed smart contract Solidity files.
+
 ## Services_dev
 The micorservices applications development, including:
 
