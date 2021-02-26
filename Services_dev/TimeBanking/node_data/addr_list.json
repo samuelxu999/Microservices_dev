@@ -5,6 +5,7 @@
 	"Ubuntu18-readbarn-2": "0xb01a89066fab36988b306a2cd6e5c7ab83277230",
 	"sam_ubuntu": "0x7711493c45048648ab7027f0d6737bf9e352e180",
 	"sam_ubuntu-docker": "0xdcbe88e1ba58cd7eae1ec9cc9149b5788c7b6485",
+	"Ubuntu18-GPU-docker": "0x686ab8ac2e56ba452d025a4447a714998763c1c3",
 	"ussc2104-lab1": "0x7881d778cc85ff7b385e72cd960b456e1ab22f95",
 	"ussc2104-lab2": "0x7d0b094d23799467622c0f37488f8e272b1bbbc1",
 	"ussc2104-lab3": "0x2299e61539cff6d840826fedc4dcf238eeb38754",
@@ -21,6 +22,5 @@
 	"AuthToken": "0xfc4b99fbc12788d0a7fc75867b0f31cca7e2dd4a",
 	"IndexToken": "0x7329747773c78bc6236551ee4318a91bf77d9e36",
 	"HashModelToken": "0x761b8a58ec194f9c4d1630ab98da0420a50d30a0",
-	"CapACToken": "0x5446e90db8f1e5eceb01e618ebf48fa5ace7abde",
-	"SrvExchangeToken": "0xd7b9d5455cc31a176507fe6ec67d679c5bb29ad1"
+	"CapACToken": "0x5446e90db8f1e5eceb01e618ebf48fa5ace7abde"
 }
