@@ -47,3 +47,4 @@ EXPOSE 80
 
 #Default command
 CMD ["./Broker_Server.py"]
+#ENTRYPOINT ["${HOME}/geth_cmd/startminer.sh"]
