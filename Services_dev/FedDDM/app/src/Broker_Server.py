@@ -76,7 +76,7 @@ def getBroker():
 
 	json_data['host']={}
 	json_data['host']['account']=host_account
-	json_data['host']['balance']=host_balance
+	json_data['host']['balance']=format(host_balance, '.3f')
 
 	json_data['publisher']={}
 	json_data['publisher']['vid']=publisher_info[0]
