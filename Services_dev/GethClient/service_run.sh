@@ -8,6 +8,7 @@ IMAGE_TYPE=$3
 SSH_PORT=$4
 RPC_PORT=$5
 PORT=$6
+MINE=$7
 
 ## Check container name
 if [[ "" == $2 ]]; then
@@ -54,8 +55,13 @@ if  [ "start" == "$OPERATION" ] ; then
 	## bootup container node
 	./run_ssh.sh start $CONTAINER_NAME $SSH_PORT $RPC_PORT $PORT
 
-	## run geth as node
-	./docker_exec.sh $CONTAINER_NAME docker /home/docker/geth_cmd/startgeth.sh &>/dev/null &
+	if  [ "mine" == "$MINE" ] ; then
+		## run geth as miner by using 1 core
+		./docker_exec.sh $CONTAINER_NAME docker /home/docker/geth_cmd/startminer.sh &>/dev/null &
+	else
+		## run geth as node without mining
+		./docker_exec.sh $CONTAINER_NAME docker /home/docker/geth_cmd/startnode.sh &>/dev/null &
+	fi
 
 ## Stop container
 elif [ "stop" == "$OPERATION" ] ; then
