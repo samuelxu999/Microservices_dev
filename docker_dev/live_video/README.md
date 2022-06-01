@@ -2,6 +2,11 @@
 This docker image built on opencv_baseimage to act as webservice and provide live camera video streams.
 The overview of contents of project are:
 
+## Use RPI camera as a USB video device (Only for Raspberry Pi)
+As opencv code use /dev/video0 as videstream source, execute following command to mount RPI camera to /dev/video0. 
+
+sudo modprobe bcm2835-v4l2
+
 ## Dockerfile
 The Dockerfile defines all environmental tools and denpendencies inside your container.
 
@@ -28,3 +33,5 @@ Run the docker image, just execute run_bash.sh. After container startup, run sam
 
 $ python3 main.py
 
+## Show livevode service
+Input livevode service api address in network blowser, eg:'http://128.226.78.24:8080/' (replace to IP of host machine that runs container.)

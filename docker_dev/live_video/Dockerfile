@@ -1,5 +1,6 @@
 # Use opencv-based image given platform
-FROM samuelxu999/opencv_baseimage:x86
+# FROM samuelxu999/opencv_baseimage:x86
+FROM samuelxu999/opencv_baseimage:armv7l
 
 # -------------------- Add apps to docker ------------------
 # Setting up working directory
