@@ -1,4 +1,4 @@
-# ethereum_baseimage_1.10.19:x86
+# ethereum_baseimage_1.10.19:armv7l
 This docker image built on Ubuntu-20.04 and includes: go-1.18.3 and geth-1.10.19.
 
 The overview of contents of project are:
@@ -21,7 +21,7 @@ $ docker tag imagename username/repository:tag
 
 For example:
 
-$ docker tag ethereum_baseimage_1.10.19 samuelxu999/ethereum_baseimage_1.10.19:x86
+$ docker tag ethereum_baseimage_1.10.19 samuelxu999/ethereum_baseimage_1.10.19:armv7l
 
 3) Publish the imagename by uploading your tagged image to the repository:
 
@@ -29,7 +29,7 @@ $ docker push username/repository:tag
 
 For example:
 
-$ docker push samuelxu999/ethereum_baseimage_1.10.19:x86
+$ docker push samuelxu999/ethereum_baseimage_1.10.19:armv7l
 
 ## run_bash.sh
 
