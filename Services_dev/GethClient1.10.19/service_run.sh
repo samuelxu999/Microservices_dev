@@ -4,11 +4,11 @@
 
 OPERATION=$1
 CONTAINER_NAME=$2
-# IMAGE_TYPE=$3
-SSH_PORT=$3
-RPC_PORT=$4
-PORT=$5
-MINE=$6
+IMAGE_TYPE=$3
+SSH_PORT=$4
+RPC_PORT=$5
+PORT=$6
+MINE=$7
 
 ## Check container name
 if [[ "" == $2 ]]; then
@@ -36,19 +36,17 @@ if  [ "start" == "$OPERATION" ] ; then
 		exit 0
 	fi
 
-	# ## Check image type name
-	# if [ "x86" == $IMAGE_TYPE ]; then
-	# 	echo "Use x86 version"
-	# 	IMAGE_FILE="samuelxu999/geth_node_1.10.19:x86"
-	# elif [ "arm" == $IMAGE_TYPE ]; then
-	# 	echo "Use armv7l version"
-	# 	IMAGE_FILE="samuelxu999/geth_node_1.10.19:armv7l"
-	# else
-	# 	echo "Not support image version."
-	# 	exit 0
-	# fi
-
-	IMAGE_FILE="samuelxu999/geth_node_1.10.19:x86"
+	## Check image type name
+	if [ "x86" == $IMAGE_TYPE ]; then
+		echo "Use x86 version"
+		IMAGE_FILE="samuelxu999/geth_node_1.10.19:x86"
+	elif [ "arm" == $IMAGE_TYPE ]; then
+		echo "Use armv7l version"
+		IMAGE_FILE="samuelxu999/geth_node_1.10.19:armv7l"
+	else
+		echo "Not support image version."
+		exit 0
+	fi
 
 	## prepare docker image
 	docker pull "$IMAGE_FILE"
@@ -69,8 +67,13 @@ if  [ "start" == "$OPERATION" ] ; then
 elif [ "stop" == "$OPERATION" ] ; then
 	echo "Stop running service!"
 	./run_ssh.sh stop $CONTAINER_NAME
+
 ## List container
-else
+elif [ "show" == "$OPERATION" ] ; then
 	echo "Show running service!"
-	./run_ssh.sh list
+	docker container ls
+
+## Show usage
+else
+	echo "Usage $0 -operation(start|stop|show) -container_name(geth-client@id) -image_type(x86|arm) -ssh_port(8022) -rpc_port(8042) -port(30305) mine"
 fi

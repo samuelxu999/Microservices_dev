@@ -55,7 +55,7 @@ if  [ "start" == "$OPERATION" ] ; then
 	for i in $(seq 1 $NODE_NUM); do 
 		echo "Startup container: $CONTAINER_NAME$i!"
 		port_idx=$((i-1))
-		sudo ./service_run.sh start $CONTAINER_NAME$i $((SSH_PORT+port_idx)) $((RPC_PORT+port_idx)) $((PORT+port_idx)) $CMD
+		sudo ./service_run.sh start $CONTAINER_NAME$i x86 $((SSH_PORT+port_idx)) $((RPC_PORT+port_idx)) $((PORT+port_idx)) $CMD
 	done
 
 ## Stop cluster
@@ -89,8 +89,12 @@ elif [ "exec" == "$OPERATION" ] ; then
 	done
 
 ## List cluster
-else
+elif [ "show" == "$OPERATION" ] ; then
 	echo "Show running geth client!"
 	sudo ./run_ssh.sh list | grep $CONTAINER_NAME
+
+## Show usage
+else
+	echo "Usage $0 -operation(start|stop|exec|show) -node_num(4) -cmd(mine) -ssh_port(8022) -rpc_port(8042) -port(30305)"
 fi
 

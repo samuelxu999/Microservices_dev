@@ -1,5 +1,5 @@
 # GethClient
-This docker image built on samuelxu999/ethereum_baseimage_1.10.19:x86  to act as blockchain node to work as Geth client
+This docker image built on samuelxu999/ethereum_baseimage_1.10.19:(x86 or armv7l)  to act as blockchain node to work as Geth client
 
 The overview of contents of project are:
 
@@ -30,7 +30,9 @@ Before build docker, run $dos2unix geth_cmd/*.sh to transfer scripts to unix for
 
 ## build.sh
 
-After executing build.sh, the docker image live_video will be built on your local environment.
+After executing build.sh, the docker image geth_node_1.10.19 will be built on your local environment.
+
+./service_run.sh make x86 geth_node_1.10.19
 
 ## run_ssh.sh 
 
@@ -48,7 +50,12 @@ Run 'docker exec command' to interact with tools and scripts in container.
 
 Instruct hwo to run 'docker_exec.sh' to startup services and execute scripts in container.
 
-./service_run.sh start geth-client1 8122 8044 30305
+./service_run.sh start geth-client1 x86 8022 8042 30305 mine
 
+## cluster_exec.sh
 
+This script is used to launch mining cluster on a cloud server.
 
+./cluster_exec.sh start 6 mine
+
+./cluster_exec.sh stop 6
