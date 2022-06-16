@@ -9,22 +9,22 @@ RPC_PORT=$5
 PORT=$6
 
 
-CONTAINER_NAME="geth-client"
+CONTAINER_NAME="geth-client1.10.19-"
 
 if [[ "" == $3 ]]; then
 	CMD="pwd"
 	echo "Use default cmd value: $CMD"
 fi
 if [[ "" == $4 ]]; then
-	SSH_PORT=8022
+	SSH_PORT=8122
 	echo "Use default ssh_port value: $SSH_PORT"
 fi
 if [[ "" == $5 ]]; then
-	RPC_PORT=18042
+	RPC_PORT=18142
 	echo "Use default rpc_port value: $RPC_PORT"
 fi
 if [[ "" == $6 ]]; then
-	PORT=30305
+	PORT=31305
 	echo "Use default port value: $PORT"
 fi
 
