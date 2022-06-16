@@ -21,4 +21,4 @@ fi
 #--unlock 0 --password ${HOME}/account/password.sec
 
 ## launch geth client app
-/opt/go-ethereum/build/bin/geth --identity "geth_node" --networkid 42 --datadir "/home/docker/account" --nodiscover --mine --miner.threads=1 --http --http.port "8042" --port "30303" --ipcpath "/home/docker/.ethereum/geth.ipc"
+/opt/go-ethereum/build/bin/geth --syncmode full --identity "geth_node" --networkid 42 --datadir "/home/docker/account" --nodiscover --mine --miner.threads=1 --http --http.port "8042" --port "30303" --ipcpath "/home/docker/.ethereum/geth.ipc"
