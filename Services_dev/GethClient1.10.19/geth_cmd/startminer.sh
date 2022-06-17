@@ -22,7 +22,7 @@ if ! [ "$(/bin/ls -A $KEY_DIR)" ]; then
 fi
 
 ## copy static-nodes.json to account folder
-/bin/cp $Node_dir/static-nodes.json .$Account_dir/geth/
+/bin/cp $Node_dir/static-nodes.json $Account_dir/geth/
 
 ## launch geth client app
 $Eth_path --identity "geth_node" \
@@ -30,6 +30,7 @@ $Eth_path --identity "geth_node" \
 --datadir "$Account_dir" \
 --nodiscover \
 --syncmode full \
+--gcmode archive \
 --mine \
 --miner.threads=1 \
 --http --http.port "8042" \
