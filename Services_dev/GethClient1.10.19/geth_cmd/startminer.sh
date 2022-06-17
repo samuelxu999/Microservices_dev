@@ -2,31 +2,32 @@
 
 ## Set key folder path
 KEY_DIR="/home/docker/account/keystore"
+Account_dir="/home/docker/account"
+Node_dir="/home/docker/node_data"
+Eth_path="/opt/go-ethereum/build/bin/geth"
 
 ## check if main account is available
 if ! [ "$(/bin/ls -A $KEY_DIR)" ]; then
 	## new account dir
-	/bin/mkdir ./account
+	/bin/mkdir $Account_dir
 
 	## Initialize miners
-	/opt/go-ethereum/build/bin/geth --datadir /home/docker/account init /home/docker/node_data/genesis.json
+	$Eth_path --datadir $Account_dir init $Node_dir/genesis.json
 
 	## Copy password to docker
-	/bin/cp /home/docker/node_data/password.sec /home/docker/account/password.sec
+	/bin/cp $Node_dir/password.sec $Account_dir/password.sec
 
 	## Create account based on password.sec
-	/opt/go-ethereum/build/bin/geth --datadir /home/docker/account account new --password /home/docker/account/password.sec
+	$Eth_path --datadir $Account_dir account new --password $Account_dir/password.sec
 fi
 
 ## copy static-nodes.json to account folder
-/bin/cp /home/docker/node_data/static-nodes.json /home/docker/account/
-
+/bin/cp $Node_dir/static-nodes.json .$Account_dir/geth/
 
 ## launch geth client app
-/opt/go-ethereum/build/bin/geth \
---identity "geth_node" \
+$Eth_path --identity "geth_node" \
 --networkid 2104 \
---datadir "/home/docker/account" \
+--datadir "$Account_dir" \
 --nodiscover \
 --syncmode full \
 --mine \
@@ -35,5 +36,5 @@ fi
 --port "30303" \
 --allow-insecure-unlock \
 --unlock 0 \
---password /home/docker/account/password.sec \
---ipcpath "/home/docker/.ethereum/geth.ipc"
+--password "$Account_dir/password.sec" \
+--ipcpath "$HOME/.ethereum/geth.ipc"
