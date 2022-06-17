@@ -5,6 +5,8 @@ KEY_DIR="/home/docker/account/keystore"
 
 ## check if main account is available
 if ! [ "$(/bin/ls -A $KEY_DIR)" ]; then
+	## new account dir
+	/bin/mkdir ./account
 
 	## Initialize miners
 	/opt/go-ethereum/build/bin/geth --datadir /home/docker/account init /home/docker/node_data/genesis.json
