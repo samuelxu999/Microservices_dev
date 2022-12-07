@@ -33,5 +33,11 @@ Run the docker image, just execute run_bash.sh. After container startup, run sam
 
 $ python3 main.py
 
-## Show livevode service
-Input livevode service api address in network blowser, eg:'http://128.226.78.24:8080/' (replace to IP of host machine that runs container.)
+## Show livevideo service
+Input livevideo service api address in network blowser, eg:'http://128.226.78.24:8080/' (replace to IP of host machine that runs container.)
+
+## If you want auto-run livevideo service after system bootup, you need add following commands in /etc/rc.local
+
+sudo modprobe bcm2835-v4l2
+
+$(your local directory)/Microservices_dev/docker_dev/live_video/run.sh
